@@ -1,0 +1,14 @@
+language: node_js
+node_js: 10
+
+script: npm run build
+
+deploy:
+- provider: releases
+  api_key:
+    secure: "VddJcaSnjOcWSVmM0b+B7s/C7MrKomZypgD+wBtfgJYmcKU6bBYFNrnzO3J6iRrWU24ChFyZwDuX0bzLsVXQwGbVitlU6TqltKZDuMZgQUNskIg/0M3aZBijz4lzN9D0+ABOhEoorog39pEV3tgL93GW585eat8SBnZVOJeJGNcIRMvVkZy9+HoyOFSHhJhrpXGXybf2kuk9cGBmkEWiUHEF05Pe2y1Jw5czj1P2u/6VPd+fSqPKUkyZK/GpbbyoalX3jx/oZ4Ae8+IK2aaOdCjasqCKFGzw/4nB/i5tjPwNFrs0wgtEDlPgGOgI9vrEnKAM/yWpNGvz2Hf5g+TiYW1jXPRofpRBWDep4TA9cQKXVgxqFKy1w1HI3ftMt/Np5+Q1aE0GGW2wO0UfDCY54s/fn/thKV1x3hB8YkIYTzr5lV9BdTxurq6bHO1u/IPCmIQ99l23ySK+Ll6b4Xm4LyrSioxCmP4uMy+UKuYR7dNidon4QkaGNTFTDwXg3GefrODPmIleZmFhDKoDTJBBimYTcTK4UCp2gcHIEtqU/TUB/tXo5I7+tMmBareInvOFy8f+D7wQVDBVVR5ZL7sO+m3S2TE5aHYIMiHu7WIBeP55X4Dwr8DvSszw1jsqeGDxe183MKa5Sxp8hx3j/GFVXq/uTwEySpD1Ko39n9X5IuE="
+  file_glob: true
+  file: build/*
+  skip_cleanup: true
+  on:
+    tags: true
