@@ -1,6 +1,6 @@
 {
   "name": "cfn-compile",
-  "version": "0.0.1-rc.0",
+  "version": "1.0.0",
   "description": "Compile cloudformation templates",
   "main": "src/bin/index.js",
   "bin": "src/bin/index.js",
