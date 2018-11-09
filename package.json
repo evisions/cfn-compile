@@ -2,7 +2,7 @@
   "name": "cfn-compile",
   "version": "1.0.0",
   "description": "Compile cloudformation templates",
-  "main": "src/bin/index.js",
+  "main": "src/lib/main.js",
   "bin": "src/bin/index.js",
   "scripts": {
     "start": "node ./src/bin/index",
@@ -20,6 +20,7 @@
     "commander": "^2.19.0",
     "mkdirp": "^0.5.1",
     "mustache": "^3.0.0",
-    "node-yaml": "^3.1.1"
+    "node-yaml": "^3.1.1",
+    "shelljs": "^0.8.2"
   }
 }
