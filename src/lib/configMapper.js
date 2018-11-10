@@ -82,20 +82,25 @@ exports.resovlePropertyValue = (propertyValue, config) => {
   } else if (propertyValue.env) {
     return process.env[propertyValue.env];
   }
-  return propertyValue;
+  return exports.resolvePropertyValues(propertyValue, config);
 }
 
-exports.resolvePropertyValuesToConfig = (config) => {
-  const propertyKeys = Object.keys(config.properties);
+exports.resolvePropertyValues = (properties, config) => {
+  const propertyKeys = Object.keys(properties);
   const outputProperties = {};
   propertyKeys.forEach((key) => {
-    const propertyValue = config.properties[key];
+    const propertyValue = properties[key];
     if (typeof propertyValue === 'string') {
       outputProperties[key] = propertyValue;
     } else {
       outputProperties[key] = exports.resovlePropertyValue(propertyValue, config);
     }
   });
+  return outputProperties;
+};
+
+exports.resolvePropertyValuesToConfig = (config) => {
+  const outputProperties = exports.resolvePropertyValues(config.properties, config);
 
   return {
     ...config,
