@@ -20,9 +20,9 @@ exports.readConfigFileData = ({ configFile }) => {
     return null;
   }
   const configFileString = fs.readFileSync(configFile.resolvedPath, 'utf8');
-  if (configFile.rawValue.endsWith('json')) {
+  if (configFile.resolvedPath.endsWith('json')) {
     return JSON.parse(configFileString);
-  } else if (configFile.rawValue.endsWith('yml') || program.config.endsWith('yaml')) {
+  } else if (configFile.resolvedPath.endsWith('yml') || program.config.endsWith('yaml')) {
     return yaml.parse(configFileString);
   }
   return  null;
@@ -56,7 +56,7 @@ exports.mapProgramInputToConfig = (program) => {
     cwd: process.cwd(),
     input: {
       rawValue: program.input,
-      resolvePath: exports.resolvePath(program.input),
+      resolvedPath: exports.resolvePath(program.input),
     },
     output: {
       rawValue: program.output,
@@ -82,7 +82,7 @@ exports.resovlePropertyValue = (propertyValue, config) => {
   } else if (propertyValue.env) {
     return process.env[propertyValue.env];
   }
-  return null;
+  return propertyValue;
 }
 
 exports.resolvePropertyValuesToConfig = (config) => {
